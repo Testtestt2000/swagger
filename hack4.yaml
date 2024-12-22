@@ -1,0 +1,45 @@
+swagger: '2.0'
+info:
+  title: Fake Login API
+  description: |
+    This is a fake login page for testing purposes. This API is used to simulate login attempts and monitor them.
+  version: 1.0.0
+basePath: /api/v1
+produces:
+  - application/json
+consumes:
+  - application/json
+paths:
+  /login:
+    post:
+      summary: Simulates a login attempt
+      description: |
+        This endpoint accepts login credentials (username and password) and logs the attempts for testing. No actual authentication takes place.
+      parameters:
+        - name: username
+          in: body
+          description: The username of the user attempting to log in.
+          required: true
+          type: string
+        - name: password
+          in: body
+          description: The password of the user attempting to log in.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Login attempt was recorded successfully.
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: "Login attempt recorded."
+        '400':
+          description: Invalid input.
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: "Invalid credentials."
